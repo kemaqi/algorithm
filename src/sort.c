@@ -49,14 +49,50 @@ void bubble_sort(int arr[],uint32_t len)
 		}
 	}
 }
+void quick_sort(int arr[],uint32_t len)
+{
+	int i = 0;
+	int j = len-1;
+	int temp;
+	if(len<2)
+	{
+		return;
+	}
+	while(i<j)
+	{
+		while(arr[j]>=arr[0]&&j>i)
+		{
+			j--;
+		}
+		while(arr[i]<=arr[0]&&i<j)
+		{
+			i++;
+		}
+		temp = arr[j];
+		arr[j] = arr[i];
+		arr[i] = temp;
+	}
+	if(i==j)
+	{
+		temp = arr[0];
+		arr[0] = arr[i];
+		arr[i] = temp;
+	}
+	quick_sort(arr,i);
+	quick_sort(arr+i+1,len-i-1);
 
+}
 bool test_sort(void)
 {
 	int arr[][6] = \
 	{
+		{1,1,3,3,2,2},
+		{1,1,1,1,2,1},
+		{2,2,2,2,2,1},
 		{1,2,3,4,5,6},
 		{6,5,4,3,2,1},
-		{4,5,6,3,2,1}
+		{4,5,6,3,2,1},
+
 	};
 
 	printf("&arr=%x\n", &arr);
@@ -84,7 +120,7 @@ bool test_sort(void)
 	printf("%s\n","test start..." );
 	for(int i=0;i<sizeof(arr)/sizeof(arr[0]) ;i++)
 	{
-		bubble_sort(arr[i],sizeof(arr[i])/sizeof(arr[i][0]));
+		quick_sort(arr[i],sizeof(arr[i])/sizeof(arr[i][0]));
 	}
 	printf("%s\n","test end" );
 	for(int i=0;i<sizeof(arr)/sizeof(arr[0]) ;i++)
