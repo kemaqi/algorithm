@@ -7,7 +7,7 @@
 int main()
 {
 	printf("%s\n","main start" );	
-	test_sort();
+	test_find();
     printf("%s\n","main finshed" );	
     return 0;
 }

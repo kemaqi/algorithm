@@ -56,7 +56,7 @@ $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 
 # make clean删除所有.o和目标文件
 clean:
-	@rm -f $(OBJS) $(BIN_PATH)*
+	@rm -f $(OBJS) $(BIN_PATH)* $(TARGET)
 
 test:
 	echo "PWD     = $(PWD)"
